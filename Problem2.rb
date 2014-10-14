@@ -7,14 +7,8 @@ class Problem2
       fibonacci.push(n)
     end
     fibonacci.pop
-    @fibonacci = fibonacci
+    fibonacci.delete_if &:odd?
+    fibonacci.inject(:+)
   end
 
-  def find_evens
-    @fibonacci.delete_if &:odd?
-  end
-
-  def find_sum
-    @fibonacci.inject(:+)
-  end
 end
