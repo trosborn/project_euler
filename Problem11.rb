@@ -25,19 +25,89 @@ class Problem11
 
   def down
     grid
-    y = 0
     b = 0
-    while y < 16
-      yplusone = y + 1
-      yplustwo = y + 2
-      yplusthree = y + 3
-      n = @ary[y][0].to_i * @ary[yplusone][0].to_i * @ary[yplustwo][0].to_i * @ary[yplusthree][0].to_i
-      if n > b
-        b = n
+    x = 0
+    while x < 20
+      y = 0
+      while y < 17
+        yplusone = y + 1
+        yplustwo = y + 2
+        yplusthree = y + 3
+        n = @ary[y][x].to_i * @ary[yplusone][x].to_i * @ary[yplustwo][x].to_i * @ary[yplusthree][x].to_i
+        if n > b
+          b = n
+        end
+        y += 1
       end
-      puts b
+      x += 1
+    end
+    puts b
+  end
+
+  def across
+    b = 0
+    y = 0
+    while y < 20
+      x = 0
+      while x < 17
+        xplusone = x + 1
+        xplustwo = x + 2
+        xplusthree = x + 3
+        n = @ary[y][x].to_i * @ary[y][xplusone].to_i * @ary[y][xplustwo].to_i * @ary[y][xplusthree].to_i
+        if n > b
+          b = n
+        end
+        x += 1
+      end
       y += 1
     end
+    puts b
+  end
+
+  def south_east
+    b = 0
+    y = 0
+    while y < 17
+      x = 0
+      while x < 17
+        xplusone = x + 1
+        xplustwo = x + 2
+        xplusthree = x + 3
+        yplusone = y + 1
+        yplustwo = y + 2
+        yplusthree = y + 3
+        n = @ary[y][x].to_i * @ary[yplusone][xplusone].to_i * @ary[yplustwo][xplustwo].to_i * @ary[yplusthree][xplusthree].to_i
+        if n > b
+          b = n
+        end
+        x += 1
+      end
+      y += 1
+    end
+    puts b
+  end
+
+  def south_west
+    b = 0
+    y = 19
+    while y > 2
+      x = 0
+      while x < 17
+        xplusone = x + 1
+        xplustwo = x + 2
+        xplusthree = x + 3
+        yminusone = y - 1
+        yminustwo = y - 2
+        yminusthree = y - 3
+        n = @ary[y][x].to_i * @ary[yminusone][xplusone].to_i * @ary[yminustwo][xplustwo].to_i * @ary[yminusthree][xplusthree].to_i
+        if n > b
+          b = n
+        end
+        x += 1
+      end
+      y -= 1
+    end
+    puts b
   end
 
 end
