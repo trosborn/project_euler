@@ -14,9 +14,9 @@ class Problem12
   end
 
   def check_divisors
-    x = 1000
+    x = 10
     q = 0
-    until q > 500
+    until q > 250
       x += 1
       q = triangular_number(x).length
     end
