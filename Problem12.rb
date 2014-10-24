@@ -3,20 +3,22 @@ class Problem12
   def triangular_number num
     n = num
     x = n*(n+1)/2
+    puts x
     factors(x)
   end
 
   def factors num
     x = num
-    (1..x).select { |n| (x % n).zero? }
+    root = Math.sqrt(num).ceil
+    (1..root).select { |n| (x % n).zero? }
   end
 
   def check_divisors
-    x = 50
-    q = 10
-    until q == 50
+    x = 1000
+    q = 0
+    until q > 500
       x += 1
-      q = triangular_number(x)
+      q = triangular_number(x).length
     end
   end
 
