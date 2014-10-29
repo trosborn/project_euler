@@ -1,10 +1,12 @@
 class Problem15
-  def binomial n, k
-    z = n-k
-    factor(n)/factor(k)*factor(z)
+  def binomial
+    n = 20 + 20
+    n = factor(n)
+    x = factor(20)
+    n / (x*x)
   end
 
   def factor x
-    x.downto(1).inject(:*)
+    (1..x).inject(:*) || 1
   end
 end
