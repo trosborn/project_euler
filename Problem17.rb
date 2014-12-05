@@ -2,57 +2,48 @@ class Problem17
 
   def array
     n = 0
-    ary = Array("1".."1000")
+    ary = Array(1..999)
     ary.each do |a|
-      n += spell_number(a).length
+      n += number_count(a).length
+      puts number_count(a)
     end
-    puts n
+    remove_ands_from_pure_100s_and_add_1000 = "onethousand".length - 27
   end
 
-  def spell_number num
-    n = num
-    if n.to_i >= 100
-      bigcount(n)
-    elsif n.to_i < 100
-      count(n)
-    end
-  end
-
-  def bigcount n
-    if n[2].to_i != 0
-      n = n[0]
-      to_w(n) + " hundred and"
+  def number_count n
+    num = n
+    if n > 99
+      triple_digits(n)
+    elsif n > 9 && n < 100
+      double_digits(n)
     else
-      n = n[0]
-      to_w(n) + " hundred"
+      to_w(n)
     end
   end
 
-  def count n
-    if n.to_i < 20
-      if n[0].to_i != 1
-        n = n[0]
-        to_bigw(n)
-      else
-        n = n[0] + n[1]
-        to_w(n)
-      end
+  def triple_digits n
+    num = n
+    third_digit = num.to_s[0]
+    hundred = to_w(third_digit) + "hundredand"
+    last_two_digits = num.to_s[1, 2].to_i
+    doubles = double_digits(last_two_digits)
+    hundred + doubles
+  end
+
+  def double_digits n
+    num = n
+    if num <= 20
+      to_w(num)
     else
-      b = n[0]
-      x = n[1]
-      to_bigw(b) + " " + to_w(x)
+      double = num.to_s[0].to_i + 18
+      single = num.to_s[1]
+      to_w(double) + to_w(single)
     end
   end
 
   def to_w n
     n = n.to_i
-    spelling = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
-    spelling.slice(n)
-  end
-
-  def to_bigw n
-    n = n.to_i
-    spelling = ['zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    spelling = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'hundred']
     spelling.slice(n)
   end
 end
