@@ -3,7 +3,7 @@ class Problem14
   def iterate
     i = 2
     b = 1
-    while i < 1000000
+    while i < 1_000_000
       n = i
       chain_length = 1
       a = 1
