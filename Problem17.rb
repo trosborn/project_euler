@@ -5,9 +5,9 @@ class Problem17
     ary = Array(1..999)
     ary.each do |a|
       n += number_count(a).length
-      puts number_count(a)
     end
     remove_ands_from_pure_100s_and_add_1000 = "onethousand".length - 27
+    puts n + remove_ands_from_pure_100s_and_add_1000
   end
 
   def number_count n
