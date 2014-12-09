@@ -1,8 +1,5 @@
-class Problem7
-  require 'prime'
+require 'prime'
 
-  def find_prime
-    Prime.take(10001)
-  end
-
+def find_prime
+  Prime.take(10001)
 end
