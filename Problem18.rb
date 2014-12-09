@@ -8,9 +8,9 @@ def tree
 end
 
 def compare_sums
-  if @ary[8][8] + @ary[9][9] > @ary[8][8] + @ary[9][8]
-    return @ary[8][8] + @ary[9][9]
-  else
-    return @ary[8][8] + @ary[9][8]
+  i = @ary.length -1
+  while i > 0
+    n = @ary[i].length
+
   end
 end
