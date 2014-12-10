@@ -1,6 +1,6 @@
 def loop year
   total_days = 366
-  sundays = 0
+  sundays = 1
   while year <= 2000
     month = 1
     while month <= 12
