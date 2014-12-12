@@ -6,9 +6,8 @@ def triangular_number num
 end
 
 def factors num
-  x = num
   root = Math.sqrt(num).ceil
-  (1..root).select { |n| (x % n).zero? }
+  (1..root).select { |num| (x % n).zero? }
 end
 
 def check_divisors
