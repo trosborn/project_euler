@@ -1,5 +1,5 @@
 def tree
-  ary = Array.new
+  ary = []
   f = File.open('Problem18.txt')
   file = f.read
   file.each_line do |line|
