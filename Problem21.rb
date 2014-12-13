@@ -1,6 +1,18 @@
 require 'prime'
 
-def add_factors number
+def loop
+  i = 2
+  amicable_numbers = []
+  while i < 100000
+    sum_divisors = add_divisors(i)
+    if add_divisors(sum_divisors) == i
+      amicable_numbers.push(i, sum_divisors)
+    end
+    i += 1
+  end
+end
+
+def add_divisors number
   proper_divisors(number).inject(:+)
 end
 
