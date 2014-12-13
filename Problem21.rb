@@ -1,15 +1,16 @@
 require 'prime'
 
-def loop
-  i = 2
+def compare_divisors
+  a = 2
   amicable_numbers = []
-  while i < 100000
-    sum_divisors = add_divisors(i)
-    if add_divisors(sum_divisors) == i
-      amicable_numbers.push(i, sum_divisors)
+  while a <= 10_000
+    b = add_divisors(a)
+    if (a == add_divisors(b)) && (a != b)
+      amicable_numbers.push(a)
     end
-    i += 1
+    a += 1
   end
+  amicable_numbers.inject(:+)
 end
 
 def add_divisors number
@@ -18,6 +19,9 @@ end
 
 def proper_divisors number
   primes, powers = number.prime_division.transpose
+  if powers == nil
+    return ary = []
+  end
   exponents = powers.map{ |i| (0..i).to_a }
   divisors = exponents.shift.product(*exponents).map do |powers|
     primes.zip(powers).map{ |prime, power| prime ** power }.inject(:*)
