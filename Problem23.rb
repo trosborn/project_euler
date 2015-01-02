@@ -9,8 +9,7 @@ def proper_divisors number
   divisors = exponents.shift.product(*exponents).map do |powers|
     primes.zip(powers).map{ |prime, power| prime ** power }.inject(:*)
   end
-  half = divisors.length / 2
-  divisors.sort.map{ |div| [div, number / div] }.take(half).flatten.keep_if{ |n| n != number }
+  divisor_array = divisors.uniq - [number]
 end
 
 def check_abundancy number
@@ -21,31 +20,32 @@ def check_abundancy number
   end
 end
 
-def ary
-  @ary = []
+def abundant_array
+  ary = []
   n = 2
   while n <= 20161
     abundance = check_abundancy(n)
     if abundance != false
-      @ary << abundance
+      ary << abundance
     end
     n += 1
   end
+  ary
 end
 
-def add_abundants
+def add_abundant_array_to_self
   n = 0
+  ary = abundant_array
   sum_ary = []
-  ary
-  until n == @ary.length - 1
+  until n == ary.length
     i = 0
-    until i == @ary.length - 1
-      sum_ary << @ary[n] + @ary[i]
+    until i == ary.length
+      sum_ary.push(ary[n] + ary[i])
       i += 1
     end
     n += 1
   end
-  (1..20161).to_a - sum_ary
+  ((1..20161).to_a - sum_ary).inject(:+)
 end
 
 #Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
